@@ -58,11 +58,11 @@ const MovieDetail = () => {
       <div className="header-detail" style={{ backgroundImage: `url(${movieImage})` }}>
         <div className="poster-content-background">
           <div className="poster-content">
-            <div className="detail-information overflow-y-auto">
+            <div className="detail-information">
               <h1 className='text-4xl font-bold'>{movieDetail.original_title}</h1>
               <div className="information-wrapper flex py-2">
                 <span className="info-item date">{dayjs(movieDetail.release_date).format('DD/MM/YYYY')}</span>
-                <span className="info-item genres flex">
+                <span className="info-item genres flex" style={{ flexWrap: 'wrap' }}>
                   {movieDetail.genres?.map((genre) => (
                     <div className="info-item-item">{genre.name}</div>
                   ))}

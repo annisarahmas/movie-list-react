@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
@@ -7,10 +7,22 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Category() {
+const Category = ({ category }) => {
+  const [categoryValue, setCategoryValue] = useState("");
+
+  const resetCategory = () => {
+    setCategoryValue("");
+  };
+
+  const handleCategoryChange = (value) => {
+    setCategoryValue(value);
+    category(value);
+    resetCategory();
+  };
+
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <div>
+      <div className="categoryWrapper">
         <Menu.Button className="categoryBox inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
           Options
           <ChevronDownIcon
@@ -34,65 +46,52 @@ export default function Category() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  onClick={() => handleCategoryChange('popular')}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  Top 250 Movies
+                  Popular
                 </a>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  onClick={() => handleCategoryChange('now-playing')}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  Top 250 TV Shows
+                  Now Playing
                 </a>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  onClick={() => handleCategoryChange('upcoming')}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  Most Popular Movies
+                  Upcoming
                 </a>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  onClick={() => handleCategoryChange('top-rated')}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm"
                   )}
                 >
-                  Most Popular TV Shows
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  Coming Soon
+                  Top Rated
                 </a>
               )}
             </Menu.Item>
@@ -117,3 +116,5 @@ export default function Category() {
     </Menu>
   );
 }
+
+export default Category;

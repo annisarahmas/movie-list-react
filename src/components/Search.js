@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Category from "./Category";
 
 const Search = ({ search }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -20,8 +19,6 @@ const Search = ({ search }) => {
 
   return (
     <form className="searchWrapper">
-      <Category className="input-category" />
-      
       <input
         value={searchValue}
         onChange={handleSearchInputChanges}
