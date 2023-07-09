@@ -6,7 +6,7 @@ import MovieDetail from "./MovieDetail";
 const App = () => {
   return (
     <div className="App">
-      <div className="container">
+      <div className="container pt-0">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/detail/:id' element={<MovieDetail />} />

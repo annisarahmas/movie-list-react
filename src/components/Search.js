@@ -27,7 +27,7 @@ const Search = ({ search }) => {
       />
 
       <input
-        className="btn-search shadow-sm ring-1 ring-inset ring-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-900"
+        className="btn-search px-3 py-2 text-sm font-semibold"
         onClick={callSearchFunction}
         type="submit"
         value="Search"

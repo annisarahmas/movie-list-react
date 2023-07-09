@@ -6,7 +6,8 @@ import MovieList from "./MovieList";
 import Search from "./Search";
 import Category from "./Category";
 import spinner from "../assets/spinner.gif"
-import logo from "../assets/images/logo.png"
+import logo from "../assets/images/logo-transparent.svg"
+import backgroundImg from "../assets/images/header-background.jpeg"
 import { initialState, reducer } from "../store/reducer";
 import '../assets/styles/global.css'
 
@@ -15,6 +16,7 @@ const MOVIE_API_URL =  `https://api.themoviedb.org/3/trending/all/day?api_key=${
 
 const Home = () => {
   const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
   const { movies, errorMessage, loading } = state;
 
@@ -72,6 +74,7 @@ const Home = () => {
   };
 
   const search = searchValue => {
+    setFilter(searchValue)
     dispatch({
       type: "SEARCH_MOVIES_REQUEST"
     });
@@ -119,23 +122,27 @@ const Home = () => {
 
   return (
     <div>
-        <header className="text-center">
-          <div className="text-4xl font-bold text-gray-900">
-            <img
-              width="200"
-              alt="The Movie Database (TMDB)"
-              className="logoImage"
-              src={logo}
-            />
+        <header>
+          <div className="header-wrapper" style={{ backgroundImage: `linear-gradient(to right, rgba(3,37,65, 0.8) 0%, rgba(3,37,65, 0) 100%), url(${backgroundImg})` }}>
+            <div className="header-content">
+              <img
+                width="300"
+                alt="The Movie Database (TMDB)"
+                className="logoImage"
+                src={logo}
+              />
+
+              <div className="flex flex-center justify-center">
+                <Category className="input-category" category={category} />
+                <Search search={search} />
+              </div>
+            </div>
           </div>
         </header>
 
-        <div className="flex flex-center justify-center">
-          <Category className="input-category" category={category} />
-          <Search search={search} />
-        </div>
+        {filter ? <p style={{marginTop: '3rem'}}>Hasil pencarian untuk "<strong>{filter}</strong>"</p> : null}
 
-        <div className="movieListWrapper">{ getMovies }</div>
+        <div className="movieListWrapper" style={{marginTop: filter ? '1rem' : '4rem'}}>{ getMovies }</div>
     </div>
   )
 }
