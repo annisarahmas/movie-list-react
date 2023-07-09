@@ -55,20 +55,10 @@ const MovieDetail = () => {
   const movieImage = movieDetail.backdrop_path ? `${imgPath}/${movieDetail.backdrop_path}` : posterDefault
   return (
     <div key={id}>
-      {/* Poster */}
-      {/* <div className='relative h-auto flex justify-center'>
-        <div className='h-full w-full shadowbackdrop absolute'></div>
-        <h1 className='text-white absolute bottom-0 p-10 text-2xl md:text-6xl font-bold text-center'>{movieDetail.original_title}</h1>
-        <img
-          alt={`Poster: ${movieDetail.title}`}
-          src={movieImage}
-        />
-      </div> */}
-
       <div className="header-detail" style={{ backgroundImage: `url(${movieImage})` }}>
         <div className="poster-content-background">
           <div className="poster-content">
-            <div className="detail-information">
+            <div className="detail-information overflow-y-auto">
               <h1 className='text-4xl font-bold'>{movieDetail.original_title}</h1>
               <div className="information-wrapper flex py-2">
                 <span className="info-item date">{dayjs(movieDetail.release_date).format('DD/MM/YYYY')}</span>
@@ -103,9 +93,9 @@ const MovieDetail = () => {
                     alt={`Cast Img: ${cast.name}`}
                     src={"https://image.tmdb.org/t/p/w500" + cast.profile_path}
                   />
-                  <div className="p-2">
+                  <div className="cast-info p-2">
                     <p className='font-bold'>{cast.name}</p>
-                    <p className='font-normal'>({cast.character})</p>
+                    <p className='font-normal text-[14px]'>({cast.character})</p>
                   </div>
                 </div>
               </> : null}
@@ -114,15 +104,14 @@ const MovieDetail = () => {
         </div>
       </div>
 
-      {/* trailer */}
-      <div className="text-center pb-3">
-        <h1 className="text-2xl font-semibold py-2">Trailer</h1>
-      </div>
-      <div className='flex justify-center items-center mb-10 gap-5 flex-wrap'>
+      {/* Trailer */}
+      <h1 className="subtitle text-2xl font-semibold">Trailer</h1>
+      <div className="card-cast md:px-3 flex flex-row my-5 max-w-full flex-start overflow-x-auto relative
+        scrollbar-thin scrollbar-thumb-gray-500/20 scrollbar-track-gray-900/90">
         {video.map((trailer) => (
           <>
             {trailer.type === "Trailer" ?
-              <div className="video-wrapper">
+              <div className="video-wrapper min-w-[24rem] md:min-w-[25rem] max-w-[24rem] md:max-w-[25rem] flex h-full items-center text-center flex-col mx-1">
                 <iframe width="420" height="315" src={'https://www.youtube.com/embed/' + trailer.key}></iframe>
               </div>
               : null}

@@ -8,7 +8,7 @@ import { initialState, reducer } from "../store/reducer";
 import '../assets/styles/global.css'
 
 const API_KEY = '984e50b46ae97b749b8526d887e4cd65'
-const MOVIE_API_URL =  `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&page=1`
+const MOVIE_API_URL =  `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
 
 const Home = () => {
   const [state, dispatch] = useReducer(reducer, initialState);

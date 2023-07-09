@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import dayjs from "dayjs";
+
 import posterDefault from "../assets/images/default-movie.png"
 
 const MovieList = ({ movie }) => {
@@ -13,8 +15,10 @@ const MovieList = ({ movie }) => {
           src={movieImage}
         />
       </div>
-      <h3>{movie.title}</h3>
-      {/* <p>{movie.Year}</p> */}
+      <div className="movieInfo p-2">
+        <h3>{movie.title}</h3>
+        <p className="font-normal text-[14px]">{dayjs(movie.release_date).format('MMMM D, YYYY')}</p>
+      </div>
     </Link>
   )
 }

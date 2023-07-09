@@ -2,6 +2,9 @@
   padding: 3rem;
   margin: 0 auto;
 }
+.subtitle {
+  margin-bottom: 20px;
+}
 
 /* search component */
 .searchWrapper {
@@ -9,7 +12,6 @@
   text-align: center;
   transition: border 0.2s ease 0s, background-color 0.2s ease 0s, box-shadow 0.2s ease 0s;
 }
-
 .searchWrapper > input {
   padding: 0.75rem;
   white-space: nowrap;
@@ -38,20 +40,30 @@
   display: grid;
   grid-template-columns: auto auto auto auto;
   justify-content: space-evenly;
+  grid-gap: 1rem;
 }
-
 .movieListWrapper {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 2rem;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-bottom: 10px;
 }
-
 .movieBoxItem {
- padding: 0 1rem;
-}
-.movieItem {
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  margin: 10px 4px 10px 10px;
   border-radius: 8px;
   overflow: hidden;
+}
+.movieInfo {
+  width: 100%;
+  padding: 12px 10px;
+  position: relative;
+  white-space: normal;
+  /* display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap; */
+}
+.movieInfo > p {
+  color: rgba(0,0,0,.6);
 }
 
 /* Poster */
@@ -79,6 +91,7 @@
 }
 .detail-information {
   width: 50%;
+  height: 100%;
 }
 .tagline {
   margin: 20px 0;
@@ -123,6 +136,15 @@
   margin: 10px 4px 10px 10px;
   border-radius: 8px;
   overflow: hidden;
+}
+.cast-info {
+  width: 100%;
+  padding: 12px 10px;
+  position: relative;
+  white-space: normal;
+  /* display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap; */
 }
 
 /* Video */
