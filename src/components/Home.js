@@ -16,7 +16,6 @@ const Home = () => {
 
   useEffect(() => {
     axios.get(MOVIE_API_URL).then(response => {
-      console.log('ressss', response)
       dispatch({
         type: "SEARCH_MOVIES_SUCCESS",
         payload: response.data.results
